@@ -5,7 +5,6 @@ import {
   Button,
   Form,
   Input,
-  NoneText,
   SearchList,
   SpanTitle,
   Title,
