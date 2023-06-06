@@ -37,6 +37,23 @@ export const getMovieDetails = async movieId => {
   }
 };
 
+export const searchMovies = async query => {
+  try {
+    const response = await axios.get('/search/movie', {
+      params: {
+        api_key: API_KEY,
+        query: query,
+      },
+    });
+
+    const searchResults = response.data.results;
+    return searchResults;
+  } catch (error) {
+    console.log('Error searching movies:', error.message);
+    throw error;
+  }
+};
+
 export const getMovieCast = async movieId => {
   try {
     const response = await axios.get(`/movie/${movieId}/credits`, {
@@ -49,6 +66,22 @@ export const getMovieCast = async movieId => {
     return movieCast;
   } catch (error) {
     console.log('Error fetching movie cast:', error.message);
+    throw error;
+  }
+};
+
+export const getMovieReviews = async movieId => {
+  try {
+    const response = await axios.get(`/movie/${movieId}/reviews`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+
+    const movieReviews = response.data;
+    return movieReviews;
+  } catch (error) {
+    console.log('Error fetching movie reviews:', error.message);
     throw error;
   }
 };

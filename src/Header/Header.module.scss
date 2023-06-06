@@ -1,15 +1,16 @@
 .header {
-  box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.2);
-  padding-top: 5px;
-  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background: #1c1c1c;
+  box-shadow: 13px 13px 26px #181818, -13px -13px 26px #202020;
+  padding-top: auto;
+  padding-bottom: auto;
 }
 
 .nav {
   display: flex;
   justify-content: center;
-  column-gap: 16px;
+  gap: 40px;
 }
-
-//API_KEY = 'f73865c93b2adf185bfa72e66b6a561c'
-
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzM4NjVjOTNiMmFkZjE4NWJmYTcyZTY2YjZhNTYxYyIsInN1YiI6IjY0N2UwMjFjMGZiMzk4MDBhNzlmYmZlOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SjtXH4zVzMIk04rUshNwMMGii8znI6S97ouoxrGOrIo

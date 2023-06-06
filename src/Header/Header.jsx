@@ -3,15 +3,45 @@ import style from './Header.module.scss';
 import styled from '@emotion/styled';
 
 const StyledNavLink = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  font-size: 10px;
-  border: 1px solid grey;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  background: none;
+  font-family: 'Rajdhani', sans-serif;
+
+  &::before {
+    margin-left: auto;
+  }
+
+  &::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    transition: 0.5s;
+  }
+
+  &::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    transition: 0.5s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
 
   &.active {
-    outline: 2px solid rgb(78, 78, 78);
+    color: #f44336;
   }
 `;
 
@@ -21,9 +51,6 @@ const Header = () => {
       <nav className={style.nav}>
         <StyledNavLink to={'/'}>Home</StyledNavLink>
         <StyledNavLink to={'/movies'}>Movies</StyledNavLink>
-        {/* <StyledNavLink to={'/movies/:movieId'}>MovieDetails</StyledNavLink> */}
-        {/* <StyledNavLink to={'/movies/:movieId/cast'}>Cast</StyledNavLink> */}
-        {/* <StyledNavLink to={'/movies/:movieId/reviews'}>Reviews</StyledNavLink> */}
       </nav>
     </header>
   );
