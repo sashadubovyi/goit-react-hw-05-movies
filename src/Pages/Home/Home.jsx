@@ -22,7 +22,6 @@ const HomePage = () => {
       try {
         const data = await getTrendingMovies('day');
         setMovies(data);
-        console.log(data);
       } catch (error) {
         console.log('Error fetching movies:', error);
       }
