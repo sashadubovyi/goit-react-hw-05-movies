@@ -21,3 +21,7 @@ export const Main = styled.main`
   padding-top: 25px;
   padding-bottom: 25px;
 `;
+
+export const Loading = styled.p`
+  color: #f44336;
+`;

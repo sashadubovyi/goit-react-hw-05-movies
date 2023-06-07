@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Body, Main } from './App.styled';
+import { Body, Loading, Main } from './App.styled';
 
 const Header = lazy(() => import('Header/Header'));
 const Home = lazy(() => import('Pages/Home/Home'));
@@ -12,7 +12,7 @@ const Movies = lazy(() => import('Pages/Movies/Movies'));
 export const App = () => {
   return (
     <Body>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading>Loading...</Loading>}>
         <Header />
         <Main>
           <Routes>

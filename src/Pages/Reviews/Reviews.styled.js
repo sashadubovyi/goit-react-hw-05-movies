@@ -19,3 +19,9 @@ export const BoldText = styled.p`
   font-weight: 600;
   color: #f44336;
 `;
+
+export const Loading = styled.p`
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  color: #f44336;
+`;

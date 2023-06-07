@@ -29,3 +29,9 @@ export const Name = styled.p`
   font-weight: 400;
   color: white;
 `;
+
+export const Loading = styled.p`
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  color: #f44336;
+`;

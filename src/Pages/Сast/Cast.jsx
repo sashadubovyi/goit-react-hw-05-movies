@@ -6,6 +6,7 @@ import {
   ActorImage,
   ActorList,
   List,
+  Loading,
   Name,
   PlaceholderImage,
 } from './Cast.styled';
@@ -28,7 +29,7 @@ const Cast = () => {
   }, [movieId]);
 
   if (!casts) {
-    return <p>Loading...</p>;
+    return <Loading>Loading...</Loading>;
   }
 
   return (

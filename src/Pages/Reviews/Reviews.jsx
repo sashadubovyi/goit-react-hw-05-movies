@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/moviesAPI';
-import { BoldAuthor, BoldText, Text } from './Reviews.styled';
+import { BoldAuthor, BoldText, Loading, Text } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -21,7 +21,7 @@ const Reviews = () => {
   }, [movieId]);
 
   if (!reviews) {
-    return <p>Loading...</p>;
+    return <Loading>Loading...</Loading>;
   }
 
   return (
