@@ -45,11 +45,10 @@ const Cast = () => {
                 />
               ) : (
                 <PlaceholderImage
-                  src="/src/image/default-user-image.jpg"
+                  src="/src/image/placeholderImage.jpg"
                   alt=""
                 />
               )}
-
               <Name>{actor.name}</Name>
             </ActorBox>
           </ActorList>
