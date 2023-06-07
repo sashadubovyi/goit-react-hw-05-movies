@@ -4,6 +4,20 @@ export const Title = styled.h1`
   color: white;
   letter-spacing: 2px;
   margin-bottom: 30px;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export const SpanTitle = styled.span`
