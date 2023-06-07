@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams, useNavigate } from 'react-router-dom';
+import {
+  NavLink,
+  Outlet,
+  useParams,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import { getMovieDetails } from 'services/moviesAPI';
 import {
   BoldText,
@@ -29,6 +35,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -46,7 +53,7 @@ const MovieDetails = () => {
   }, [movieId, movie]);
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate(location.state);
   };
 
   if (!movie) {

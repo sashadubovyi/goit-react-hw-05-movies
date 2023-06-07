@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'services/moviesAPI';
 import { Box, ListTrending, PrevPoster, SpanTitle, Title } from './Home.styled';
 import styled from '@emotion/styled';
@@ -16,6 +16,8 @@ const StyledLink = styled(NavLink)`
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
+  console.log('location: ', location);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +40,10 @@ const HomePage = () => {
       <ListTrending>
         {movies.map(movie => (
           <li key={movie.id}>
-            <StyledLink to={`/movies/${movie.id}`}>
+            <StyledLink
+              to={{ pathname: `/movies/${movie.id}` }}
+              state={location}
+            >
               <Box>
                 <PrevPoster
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { searchMovies } from 'services/moviesAPI';
 import {
   Button,
@@ -25,6 +25,8 @@ const StyledLink = styled(NavLink)`
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
+  console.log('location: ', location);
 
   const handleSearch = async evt => {
     evt.preventDefault();
@@ -50,7 +52,7 @@ const Movies = () => {
       <SearchList>
         {searchResults.map(movie => (
           <li key={movie.id}>
-            <StyledLink to={`/movies/${movie.id}`}>
+            <StyledLink to={`/movies/${movie.id}`} state={location}>
               {movie.original_title}&nbsp;(
               {movie.release_date.substring(0, 4)})
             </StyledLink>
