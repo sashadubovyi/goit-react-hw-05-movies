@@ -36,6 +36,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const prevLocation = location.state;
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -53,7 +54,7 @@ const MovieDetails = () => {
   }, [movieId, movie]);
 
   const handleGoBack = () => {
-    navigate(location.state);
+    navigate(prevLocation);
   };
 
   if (!movie) {
@@ -83,9 +84,11 @@ const MovieDetails = () => {
           </BoxInfo>
         </ItemCast>
         <li>
-          <StyledNavLink to={`/movies/${movieId}/cast`}>Cast</StyledNavLink>
+          <StyledNavLink to={`/movies/${movieId}/cast`} state={prevLocation}>
+            Cast
+          </StyledNavLink>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <StyledNavLink to={`/movies/${movieId}/reviews`}>
+          <StyledNavLink to={`/movies/${movieId}/reviews`} state={prevLocation}>
             Reviews
           </StyledNavLink>
           <Outlet />
