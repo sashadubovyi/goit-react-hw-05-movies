@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getTrendingMovies } from 'services/moviesAPI';
-import { SpanTitle, Title } from './Home.styled';
+import { Box, ListTrending, PrevPoster, SpanTitle, Title } from './Home.styled';
 import styled from '@emotion/styled';
 
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: white;
-  font-size: 30px;
 
   &:hover {
     color: #f44336;
@@ -23,6 +22,7 @@ const HomePage = () => {
       try {
         const data = await getTrendingMovies('day');
         setMovies(data);
+        console.log(data);
       } catch (error) {
         console.log('Error fetching movies:', error);
       }
@@ -36,15 +36,21 @@ const HomePage = () => {
       <Title>
         Trending movies <SpanTitle>today</SpanTitle>
       </Title>
-      <ul>
+      <ListTrending>
         {movies.map(movie => (
           <li key={movie.id}>
             <StyledLink to={`/movies/${movie.id}`}>
-              {movie.original_title}
+              <Box>
+                <PrevPoster
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <p>{movie.original_title}</p>
+              </Box>
             </StyledLink>
           </li>
         ))}
-      </ul>
+      </ListTrending>
     </>
   );
 };
