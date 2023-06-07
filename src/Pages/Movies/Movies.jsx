@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { searchMovies } from 'services/moviesAPI';
 import {
   Button,
@@ -11,7 +11,7 @@ import {
 } from './Movies.styled';
 import styled from '@emotion/styled';
 
-const StyledLink = styled(NavLink)`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
   font-size: 20px;
@@ -25,17 +25,29 @@ const StyledLink = styled(NavLink)`
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
-  console.log('location: ', location);
 
-  const handleSearch = async evt => {
-    evt.preventDefault();
+  useEffect(() => {
+    const name = new URLSearchParams(location.search).get('name');
+    if (name) {
+      setQuery(name);
+      handleSearch(name);
+    }
+  }, [location]);
+
+  const handleSearch = async name => {
     try {
-      const results = await searchMovies(query);
+      const results = await searchMovies(name);
       setSearchResults(results);
     } catch (error) {
       console.log('Error searching movies:', error);
     }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    navigate(`/movies?name=${query}`);
   };
 
   return (
@@ -43,11 +55,9 @@ const Movies = () => {
       <Title>
         Search <SpanTitle>movies</SpanTitle>
       </Title>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Input value={query} onChange={e => setQuery(e.target.value)} />
-        <Button type="submit" onClick={handleSearch}>
-          &#8672;&nbsp;Search
-        </Button>
+        <Button type="submit">Search</Button>
       </Form>
       <SearchList>
         {searchResults.map(movie => (

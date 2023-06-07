@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   NavLink,
   Outlet,
@@ -37,6 +37,7 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const prevLocation = location.state;
+  const saveLocation = useRef(prevLocation);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -54,7 +55,7 @@ const MovieDetails = () => {
   }, [movieId, movie]);
 
   const handleGoBack = () => {
-    navigate(prevLocation);
+    navigate(saveLocation.current);
   };
 
   if (!movie) {
